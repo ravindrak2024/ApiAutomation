@@ -17,7 +17,7 @@ agent any
   }
 stage('Run Tests'){
 			steps{
-        sh 'python -m pipenv run pytest scripts\\test_asset_status_update_received.py -v --env=eu_prod --junitxml=result.xml'
+        sh 'python -m pipenv run pytest scripts/test_asset_status_update_received.py -v --env=eu_prod --junitxml=result.xml'
 			}
   }
   
