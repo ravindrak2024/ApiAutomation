@@ -20,5 +20,11 @@ stage('Run Tests'){
         sh 'python -m pipenv run pytest scripts -v --env=eu_prod --junitxml=result.xml'
 			}
   }
+  
+}
+post {
+  always {
+    junit "**/result.xml"
+  }
 }
 }
