@@ -3,7 +3,9 @@ agent any
    stages {
 	stage('Clone'){
 		steps{
-		git 'https://github.com/ravindrab5/ApiAutomation.git'
+		git branch: 'master',
+    			     credentialsId: '4106b794-381e-4bb0-aa2f-5021943c2ea1',
+                             url: 'https://github.com/ravindrab5/ApiAutomation.git'
 		}
          }
 
