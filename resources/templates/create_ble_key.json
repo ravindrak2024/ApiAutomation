@@ -1,0 +1,10 @@
+{
+	"action": "create_ble_key",
+	"rental_id": 1234,
+	"vendor_data": {
+		"$vendor_id": "$device_id"
+	},
+	"key_validity_start_in_epoch": 1550643333,
+	"key_validity_stop_in_epoch": 1550668696,
+	"is_first_key_for_rental": "true"
+}

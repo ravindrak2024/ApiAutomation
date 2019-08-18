@@ -1,0 +1,6 @@
+{
+  "Authorization-Microservice": "$microservice_token_for_mensav",
+  "Application-Id": "$application_id_hal",
+  "x-api-key": "$pushkey_for_mocklab",
+  "signature_requested":"true"
+}

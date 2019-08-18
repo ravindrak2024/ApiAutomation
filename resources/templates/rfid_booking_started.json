@@ -1,0 +1,26 @@
+{
+	"action": "rfid_booking_started",
+	"event_id": "237035",
+	"rfid_key_map": {
+		"$rfid_key": "$rfid_val"
+	},
+	"synthesis": {
+		"latitude": 37.780636,
+		"longitude": -122.3985,
+		"mileage_in_km": 10,
+		"fuel_level_in_percent": 90,
+		"fuel_level_in_liters": 10,
+		"battery_in_percent": 95,
+		"high_voltage_battery_in_percent": 90,
+		"remaining_range_in_km": 10,
+		"engine_status": "engine_not_running",
+		"door_status": "Locked",
+		"timestamp_in_epoch": 1371234567,
+		"action": "",
+		"key": "",
+		"connected_to_charger": true
+	},
+	"raw_synthesis": {
+		"abcd": "xyz"
+	}
+}

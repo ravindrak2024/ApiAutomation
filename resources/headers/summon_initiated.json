@@ -1,0 +1,4 @@
+{
+  "Authorization-Microservice": "$microservice_token_sum",
+  "Application-Id": "$application_id_sum"
+}

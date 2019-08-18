@@ -1,0 +1,4 @@
+{
+	"action": "reset_hardware",
+	"rfids": ["$rfid_key", "456"]
+}

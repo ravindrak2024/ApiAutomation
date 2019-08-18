@@ -1,0 +1,4 @@
+{
+	"action": "force_cancel_reservation",
+	"rental_id": 1234
+}

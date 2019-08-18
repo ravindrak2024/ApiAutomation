@@ -1,0 +1,7 @@
+PUT,"{""action"":""add_rfid"",""vendor_data"":{""$vendor_id"":""$device_id""}}","{""Authorization-Microservice"":""$microservice_token_sum"",""Application-Id"":""$application_id_sum""}",200
+ASSERTEQ,"RESPONSE[""id""]",ud39293932
+ASSERTCONTAINS,"RESPONSE[0][""rfid""]",id8493939
+POST,"{""action"":""remove_rfid"",""vendor_data"":{""$vendor_id"":""$device_id""}}","{""Authorization-Microservice"":""$microservice_token_sum"",""Application-Id"":""$application_id_sum""}",200
+ASSERTEQ,"RESPONSE[""id""]",ud39293932
+ASSERTCONTAINS,"RESPONSE[0][""rfid""]",id8493939
+ASSERTCONTAINS,RESPONSE,Matching key not found in RFIDs or Device ID keys,,,,

@@ -1,0 +1,8 @@
+{
+    "id": "$vendor_id",
+    "name": "$vendor_name",
+    "token": "$vendor_token",
+    "host": "$vender_host",
+    "hardware_type": "hardwaretype1",
+    "rental_detail_delay_in_seconds": 2
+}

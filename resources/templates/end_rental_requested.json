@@ -1,0 +1,22 @@
+{
+	"action": "end_rental_requested",
+	"rfid_key_map": {
+		"1234": "r1"
+	},
+	"synthesis": {
+		"latitude": 37.7806377,
+		"longitude": -122.398502,
+		"door_status": "Locked",
+		"engine_status": "engine_not_running",
+		"remaining_range": 27,
+		"fuel_level": 10,
+		"fuel_percentage": 97,
+		"battery_level": 95,
+		"action": "",
+		"key": "",
+		"timestamp": "2006-01-02T20:04:05Z"
+	},
+	"raw_synthesis": {
+		"abcd": "xyz"
+	}
+}

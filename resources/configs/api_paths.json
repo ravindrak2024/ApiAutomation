@@ -1,0 +1,9 @@
+{
+  "si_action": "/hardware-integration/client/api/v3/asset/#asset_id/action",
+  "vi_action": "/hardware-integration/vendor/api/v3/asset/#asset_id/action",
+  "drop_tables": "/hardware-integration/api/v3/droptables",
+  "create_tenant": "/hardware-integration/api/v3/tenant/",
+  "create_vendor": "/hardware-integration/api/v3/vendor/",
+  "create_asset": "/hardware-integration/api/v3/asset/",
+  "get_asset": "/hardware-integration/api/v3/asset/#asset_id"
+}

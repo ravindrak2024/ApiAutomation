@@ -1,0 +1,26 @@
+{
+	"action": "doors_unlocked",
+	"rfid_key_map": {
+		"$rfid_key": "$rfid_val"
+	},
+	"synthesis": {
+		"latitude": 37.7806377,
+		"longitude": -122.398502,
+		"door_status": "Locked",
+		"engine_status": "engine_not_running",
+		"remaining_range": 27,
+		"battery_in_percent": 95,
+		"action": "",
+		"key": "",
+		"timestamp_in_epoch": 1371234567,
+		"mileage_in_km": 10,
+		"fuel_level_in_percent": 90,
+		"fuel_level_in_liters": 10,
+		"high_voltage_battery_in_percent": 90,
+		"remaining_range_in_km": 10,
+		"connected_to_charger": true
+	},
+	"raw_synthesis": {
+		"abcd": "xyz"
+	}
+}

@@ -1,0 +1,4 @@
+{
+	"action": "get_asset_location",
+	"rfids": ["$rfid_key", "456"]
+}

@@ -1,0 +1,11 @@
+{
+	"action": "reserve",
+	"validity_in_minutes": 60,
+	"vendor_data": {
+		"$vendor_id": "$device_id"
+	},
+	"rfids": ["$rfid_key", "456"],
+	"rental_id": 1234,
+	"key_validity_start_in_epoch": 1550643333,
+	"key_validity_stop_in_epoch": 1550668696
+}

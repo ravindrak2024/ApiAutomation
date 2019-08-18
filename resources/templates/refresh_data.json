@@ -1,0 +1,7 @@
+{
+	"action": "refresh_data",
+	"device_id": "$device_id",
+	"vendor_data": {
+		"$vendor_id": "$device_id"
+	}
+}

@@ -1,0 +1,6 @@
+{
+    "id": "$tenant_id",
+    "name": "$tenant_name",
+    "token": "$tenant_token",
+    "host": "$tenant_host"
+}

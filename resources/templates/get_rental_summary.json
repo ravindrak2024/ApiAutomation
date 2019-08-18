@@ -1,0 +1,8 @@
+{
+	"action": "trigger_rental_summary",
+	"ble_keys": ["$ble_key", "ble_key2"],
+	"rfid_keys": ["$rfid_key", "456"],
+	"rental_id": 1234,
+	"rental_start_time": 1550643333,
+	"rental_end_time": 1550668696
+}

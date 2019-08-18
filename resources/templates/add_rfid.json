@@ -1,0 +1,6 @@
+{
+	"action": "add_rfid",
+	"vendor_data": {
+		"$vendor_id": "$device_id"
+	}
+}

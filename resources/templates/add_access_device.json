@@ -1,0 +1,7 @@
+{
+	"action": "add_access_device",
+	"vendor_data": {
+		"$vendor_id": "$device_id",
+		"otakeys2": "12345"
+	}
+}

@@ -1,0 +1,6 @@
+{
+    "id": "#asset_id",
+    "vendor_id": "$vendor_id",
+    "tenant_id": "$tenant_id",
+    "asset_type": "vehicle"
+}
