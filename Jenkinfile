@@ -1,0 +1,22 @@
+pipeline {
+agent any
+   stages {
+	stage('Clone'){
+		steps{
+		git 'https://github.com/ravindrab5/ApiAutomation.git'
+		}
+         }
+
+   stage('Build'){
+			steps{
+          sh 'pip install pipenv'
+        	sh 'pipenv install --ignore-pipfile'
+			}
+  }
+stage('Run Tests'){
+			steps{
+        sh 'pipenv run pytest scripts -v --env=eu_prod --junitxml=result.xml'
+			}
+  }
+}
+}
