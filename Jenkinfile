@@ -1,0 +1,30 @@
+pipeline {
+agent any
+   stages {
+	stage('Clone'){
+		steps{
+		git branch: 'master',
+    			     credentialsId: '4106b794-381e-4bb0-aa2f-5021943c2ea1',
+                             url: 'https://github.com/ravindrab5/ApiAutomation.git'
+		}
+         }
+
+   stage('Build'){
+			steps{
+          sh 'python -m pip install pipenv'
+          sh 'python -m pipenv install --ignore-pipfile'
+			}
+  }
+stage('Run Tests'){
+			steps{
+        sh 'python -m pipenv run pytest scripts/test_asset_status_update_received.py -v --env=eu_prod --junitxml=result.xml'
+			}
+  }
+  
+}
+post {
+  always {
+    junit "**/result.xml"
+  }
+}
+}
