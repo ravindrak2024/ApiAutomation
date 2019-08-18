@@ -11,8 +11,8 @@ agent any
 
    stage('Build'){
 			steps{
-          sh 'python3.7 -m pip install pipenv'
-          sh 'python3.7 pipenv install --ignore-pipfile'
+          sh 'python -m pip install pipenv'
+          sh 'python pipenv install --ignore-pipfile'
 			}
   }
 stage('Run Tests'){
