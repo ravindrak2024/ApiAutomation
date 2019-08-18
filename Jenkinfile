@@ -9,7 +9,7 @@ agent any
 
    stage('Build'){
 			steps{
-          sh 'alias python='/usr/local/bin/python3.7'
+          sh 'alias python=\'/usr/local/bin/python3.7\''
           sh 'pip install pipenv'
         	sh 'pipenv install --ignore-pipfile'
 			}
