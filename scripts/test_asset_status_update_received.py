@@ -2,7 +2,7 @@ from .HALTestbase import HALTestbase
 from utils.RandomGenerator import *
 from utils.APIRequests import *
 
-class TestCase(HALTestbase):
+class TestCaseAssetStatusUpdateReceived(HALTestbase):
 
     def test_asset_status_update_received_with_valid_payload(self):
         baseurl = self.Templates.getFromConfig('$baseurl')

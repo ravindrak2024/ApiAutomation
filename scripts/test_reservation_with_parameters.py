@@ -2,7 +2,6 @@ import pytest
 from testinits.TestBase import TestBase
 from .HALTestbase import HALTestbase
 from utils.LogInitilizer import LogInitilizer
-logger=LogInitilizer.getLogger()
 from utils.APIRequests import *
 from utils.RandomDataType import RandomDataType
 from utils.RandomGenerator import *

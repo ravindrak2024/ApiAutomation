@@ -2,7 +2,7 @@ from .HALTestbase import HALTestbase
 from utils.RandomGenerator import *
 from utils.APIRequests import *
 
-class TestCase(HALTestbase):
+class TestCaseBookingStarted(HALTestbase):
 
     def test_booking_start_with_valid_payload(self):
         baseurl = self.Templates.getFromConfig('$baseurl')

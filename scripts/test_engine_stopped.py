@@ -2,7 +2,7 @@ from .HALTestbase import HALTestbase
 from utils.RandomGenerator import *
 from utils.APIRequests import *
 
-class TestCaseEngineStarted(HALTestbase):
+class TestCaseEngineStopped(HALTestbase):
 
     def test_engine_stopped_with_valid_values(self):
         baseurl = self.Templates.getFromConfig('$baseurl')
@@ -68,7 +68,7 @@ class TestCaseEngineStarted(HALTestbase):
         assert 'Missing Synthesis Data: Request requires complete synthesis data' in json.dumps(response_payload)
 
 
-    def test_engine_started_with_missing_raw_synthesis(self):
+    def test_engine_stopped_with_missing_raw_synthesis(self):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id

@@ -15,8 +15,6 @@ class CommonActions:
         api_path = self.templates.getFromApiPaths('create_tenant')
         header = self.templates.getFromHeaders('summon_initiated')
         payload = self.templates.getFromPayload('create_tenant')
-        print("Type of header {}".format(type(header)))
-        print("Type of payload {}".format(type(payload)))
         response_status, response_payload, response_headers = doPost(self.baseurl + api_path, header, payload)
         return response_status, response_payload, response_headers
         # do assertion here
