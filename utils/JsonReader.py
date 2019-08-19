@@ -1,5 +1,5 @@
 import json
-from utils.LogInitilizer import *
+from utils.LogInitilizer import LogInitilizer
 logger=LogInitilizer.getLogger()
 
 class JsonReader:
