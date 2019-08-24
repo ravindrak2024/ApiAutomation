@@ -1,9 +1,11 @@
 from .HALTestbase import HALTestbase
 from utils.RandomGenerator import *
 from utils.APIRequests import *
+from pytest_testrail.plugin import pytestrail
 
 class TestCaseAssetStatusUpdateReceived(HALTestbase):
 
+    @pytestrail.case('C3')
     def test_asset_status_update_received_with_valid_payload(self):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -22,6 +24,7 @@ class TestCaseAssetStatusUpdateReceived(HALTestbase):
         response_status, response_payload, response_headers = doPut(baseurl + api_path, header, payload)
         assert response_status == 204
 
+    @pytestrail.case('C4')
     def test_asset_status_update_received_with_blank_ble_key(self):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -43,6 +46,7 @@ class TestCaseAssetStatusUpdateReceived(HALTestbase):
 
         assert 'No key sent: a key is required for this request' in json.dumps(response_payload)
 
+    @pytestrail.case('C5')
     def test_asset_status_update_received_with_no_synthesis(self):
         baseurl = self.Templates.getFromConfig('$baseurl')
 

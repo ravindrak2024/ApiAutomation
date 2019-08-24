@@ -1,9 +1,11 @@
 from .HALTestbase import HALTestbase
 from utils.RandomGenerator import *
 from utils.APIRequests import *
+from pytest_testrail.plugin import pytestrail
 
 class TestCaseRfidBookingStarted(HALTestbase):
 
+    @pytestrail.case('C26')
     def test_rfid_booking_started_with_valid_payload(self):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -22,6 +24,7 @@ class TestCaseRfidBookingStarted(HALTestbase):
         response_status, response_payload, response_headers = doPut(baseurl + api_path, header, payload)
         assert response_status == 204
 
+    @pytestrail.case('C27')
     def test_rfid_booking_started_with_incorrect_rfid(self):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -43,6 +46,7 @@ class TestCaseRfidBookingStarted(HALTestbase):
         assert 'Matching key not found in RFIDs or Device ID keys' in json.dumps(response_payload)
 
 
+    @pytestrail.case('C28')
     def test_rfid_booking_started_with_blank_rfid(self):
         baseurl = self.Templates.getFromConfig('$baseurl')
 

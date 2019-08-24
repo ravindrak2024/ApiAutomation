@@ -6,10 +6,13 @@ from utils.APIRequests import *
 from utils.RandomDataType import RandomDataType
 from utils.RandomGenerator import *
 from handlers.AssertionHandler import validateAsertions
+from pytest_testrail.plugin import pytestrail
+
 import ast
 
 class TestCaseReserveWithParameters(HALTestbase):
 
+    @pytestrail.case('C25')
     def test_reserve_with_parameters_reserve_invalid_data(self,step,validations):
         method,payload,header,status=HALTestbase.commonAction.extractDataFromStep(step)    # extracting values from the test step
 

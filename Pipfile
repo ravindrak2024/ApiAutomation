@@ -1,3 +1,6 @@
+[pipenv]
+allow_prereleases = true
+
 [[source]]
 name = "pypi"
 url = "https://pypi.org/simple"
@@ -40,6 +43,7 @@ pytest = "==5.0.1"
 pytest-html = "==1.6"
 loguru = "*"
 pytest-xdist = "*"
+pytest-testrail = "*"
 
 [requires]
 python_version = "3.7"

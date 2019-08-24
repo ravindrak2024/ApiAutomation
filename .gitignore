@@ -2,3 +2,4 @@
 *.log
 *.xml
 **/__pycache__
+.idea
