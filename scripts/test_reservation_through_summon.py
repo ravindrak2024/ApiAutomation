@@ -9,7 +9,7 @@ import softest
 class TestCaseReserveThroughSummon(HALTestbase):
 
     @pytestrail.case('C22')
-    def test_reserve_with_valid_inputs(self):
+    def test_reserve_with_valid_inputs(self,client):
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
         HALTestbase.commonAction.createAsset(asset_id)        # calling create asset from common function
 
@@ -17,7 +17,7 @@ class TestCaseReserveThroughSummon(HALTestbase):
         assert response_payload['ble_key']=='ble_key11'
 
     @pytestrail.case('C23')
-    def test_reserve_with_invalid_start_time_in_epoch(self):
+    def test_reserve_with_invalid_start_time_in_epoch(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')      # Picking up the baseurl from the config file
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10) # Creating a random asset id
 
@@ -29,12 +29,12 @@ class TestCaseReserveThroughSummon(HALTestbase):
         payload=TestBase.Templates.getFromPayload('reserve')         # Picking up reserve payload from templates
         payload['key_validity_start_in_epoch']=-1             # Modifying the parameter key_validity start in epoch
 
-        response_status, response_payload, response_headers=doPut(baseurl+api_path,headers,payload)
+        response_status, response_payload, response_headers=client.doPut(baseurl+api_path,headers,payload)
         assert response_status==400
         assert response_payload['UserMessage']=='Some error occurred in transition function execution (e.g. network call)'
 
     @pytestrail.case('C24')
-    def test_reserve_with_invalid_stop_time_in_epoch(self):
+    def test_reserve_with_invalid_stop_time_in_epoch(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')  # Picking up the baseurl from the config file
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10) # Creating a random asset id
 
@@ -46,6 +46,6 @@ class TestCaseReserveThroughSummon(HALTestbase):
         payload = TestBase.Templates.getFromPayload('reserve')          # Picking up reserve payload from templates
         payload['key_validity_stop_in_epoch']=-1                # modifying key_validity_stop_in_epoch
 
-        response_status, response_payload, response_headers=doPut(baseurl+api_path,headers,payload)
+        response_status, response_payload, response_headers=client.doPut(baseurl+api_path,headers,payload)
         assert response_status==400
         assert response_payload['UserMessage']=='Some error occurred in transition function execution (e.g. network call)'

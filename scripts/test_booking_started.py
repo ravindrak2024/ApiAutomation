@@ -6,7 +6,7 @@ from pytest_testrail.plugin import pytestrail
 class TestCaseBookingStarted(HALTestbase):
 
     @pytestrail.case('C6')
-    def test_booking_start_with_valid_payload(self):
+    def test_booking_start_with_valid_payload(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -21,11 +21,11 @@ class TestCaseBookingStarted(HALTestbase):
         header = self.Templates.getFromHeaders('vendor_initiated')
         payload = self.Templates.getFromPayload('booking_started')
 
-        response_status, response_payload, response_headers = doPut(baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = client.doPut(baseurl + api_path, header, payload)
         assert response_status == 204
 
     @pytestrail.case('C7')
-    def test_booking_start_with_invalid_rfid(self):
+    def test_booking_start_with_invalid_rfid(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -41,13 +41,13 @@ class TestCaseBookingStarted(HALTestbase):
         payload = self.Templates.getFromPayload('booking_started')
         payload['rfid_key_map']['1234'] = '453'
 
-        response_status, response_payload, response_headers = doPut(baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = client.doPut(baseurl + api_path, header, payload)
 
         assert response_status == 400
         assert 'Matching key not found in RFIDs or Device ID keys' in json.dumps(response_payload)
 
     @pytestrail.case('C8')
-    def test_booking_start_with_blank_rfid(self):
+    def test_booking_start_with_blank_rfid(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -65,7 +65,7 @@ class TestCaseBookingStarted(HALTestbase):
 
         payload['rfid_key_map']['']=''
 
-        response_status, response_payload, response_headers = doPut(baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = client.doPut(baseurl + api_path, header, payload)
 
         assert response_status == 400
         assert 'Matching key not found in RFIDs or Device ID keys' in json.dumps(response_payload)

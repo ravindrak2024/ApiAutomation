@@ -1,10 +1,21 @@
 import pytest
 from handlers.ParametrizationDataHandler import ParameterizationHandler
 from handlers.TemplateHandler import TemplateHandler
+from utils.APIRequests import ApiRequests
 import re
 
 def pytest_addoption(parser):
      parser.addoption("--env", action="store", help="my option: type1 or type2")
+
+@pytest.fixture
+def client():
+    api_client=ApiRequests()
+    yield api_client
+    api_client=None
+
+
+
+
 
 
 def pytest_generate_tests(metafunc):

@@ -6,8 +6,8 @@ class HALTestbase(TestBase):
     commonAction=None
 
     @pytest.fixture(autouse=True)
-    def setup(self):
-        HALTestbase.commonAction = CommonActions(TestBase.Templates)
+    def setup(self,client):
+        HALTestbase.commonAction = CommonActions(TestBase.Templates,client)
 
         response_status, response_payload, response_headers = HALTestbase.commonAction.createTenant()
 

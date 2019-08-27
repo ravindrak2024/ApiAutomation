@@ -6,7 +6,7 @@ from pytest_testrail.plugin import pytestrail
 class TestCaseEngineStopped(HALTestbase):
 
     @pytestrail.case('C18')
-    def test_engine_stopped_with_valid_values(self):
+    def test_engine_stopped_with_valid_values(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -21,11 +21,11 @@ class TestCaseEngineStopped(HALTestbase):
         header = self.Templates.getFromHeaders('vendor_initiated')
         payload = self.Templates.getFromPayload('engine_stopped')
 
-        response_status, response_payload, response_headers = doPut(baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = client.doPut(baseurl + api_path, header, payload)
         assert response_status == 204
 
     @pytestrail.case('C19')
-    def test_engine_stopped_with_invalid_rfid_key_val(self):
+    def test_engine_stopped_with_invalid_rfid_key_val(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -41,14 +41,14 @@ class TestCaseEngineStopped(HALTestbase):
         payload = self.Templates.getFromPayload('engine_stopped')
         payload['rfid_key_map']['1234'] = '453'
 
-        response_status, response_payload, response_headers = doPut(baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = client.doPut(baseurl + api_path, header, payload)
 
         assert response_status == 400
         assert 'Matching key not found in RFIDs or Device ID keys' in json.dumps(response_payload)
 
 
     @pytestrail.case('C20')
-    def test_engine_stopped_with_missing_synthesis(self):
+    def test_engine_stopped_with_missing_synthesis(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -65,12 +65,12 @@ class TestCaseEngineStopped(HALTestbase):
 
         del payload['synthesis']
 
-        response_status, response_payload, response_headers = doPut(baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = client.doPut(baseurl + api_path, header, payload)
         assert response_status == 400
         assert 'Missing Synthesis Data: Request requires complete synthesis data' in json.dumps(response_payload)
 
     @pytestrail.case('C21')
-    def test_engine_stopped_with_missing_raw_synthesis(self):
+    def test_engine_stopped_with_missing_raw_synthesis(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -87,6 +87,6 @@ class TestCaseEngineStopped(HALTestbase):
 
         del payload['raw_synthesis']
 
-        response_status, response_payload, response_headers = doPut(baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = client.doPut(baseurl + api_path, header, payload)
         assert response_status == 400
         assert 'Missing Synthesis Data: Request requires complete synthesis data' in json.dumps(response_payload)

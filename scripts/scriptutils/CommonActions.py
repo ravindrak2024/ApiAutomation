@@ -1,21 +1,22 @@
 # This file to contain all commonly used functions here like create tenant,vendor,asset.
 
-from utils.APIRequests import *
+
 from utils.RandomGenerator import *
 import ast
 
 
 class CommonActions:
 
-    def __init__(self,templates):
+    def __init__(self,templates,client):
         self.templates=templates
         self.baseurl=templates.getFromConfig('$baseurl')
+        self.client=client
 
     def createTenant(self):
         api_path = self.templates.getFromApiPaths('create_tenant')
         header = self.templates.getFromHeaders('summon_initiated')
         payload = self.templates.getFromPayload('create_tenant')
-        response_status, response_payload, response_headers = doPost(self.baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = self.client.doPost(self.baseurl + api_path, header, payload)
         return response_status, response_payload, response_headers
         # do assertion here
 
@@ -23,7 +24,7 @@ class CommonActions:
         api_path = self.templates.getFromApiPaths('create_vendor')
         header = self.templates.getFromHeaders('summon_initiated')
         payload = self.templates.getFromPayload('create_vendor')
-        response_status, response_payload, response_headers = doPost(self.baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = self.client.doPost(self.baseurl + api_path, header, payload)
         return response_status, response_payload, response_headers
         # do assertion here
 
@@ -32,7 +33,7 @@ class CommonActions:
         header = self.templates.getFromHeaders('summon_initiated')
         payload = self.templates.getFromPayload('create_asset')
         payload['id'] = asset_id
-        response_status, response_payload, response_headers = doPost(self.baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = self.client.doPost(self.baseurl + api_path, header, payload)
         assert response_status == 201
         return response_status, response_payload, response_headers
         #do assertion here
@@ -45,7 +46,7 @@ class CommonActions:
         payload = self.templates.getFromPayload('reserve')
         payload['key_validity_start_in_epoch']=generateRandom(RandomDataType.TIMESTAMP)
         payload['key_validity_stop_in_epoch']=generateRandom(RandomDataType.TIMESTAMP,future_time_in_min=60)
-        response_status, response_payload, response_headers = doPut(self.baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = self.client.doPut(self.baseurl + api_path, header, payload)
         assert response_status==200
         return response_status, response_payload, response_headers
 
@@ -54,7 +55,7 @@ class CommonActions:
         api_path = api_path.replace('#asset_id', asset_id)
         header = self.templates.getFromHeaders('vendor_initiated')
         payload = self.templates.getFromPayload('reservation_confirmed')
-        response_status, response_payload, response_headers = doPut(self.baseurl + api_path, header, payload)
+        response_status, response_payload, response_headers = self.client.doPut(self.baseurl + api_path, header, payload)
         assert response_status == 204
         return response_status, response_payload, response_headers
 
