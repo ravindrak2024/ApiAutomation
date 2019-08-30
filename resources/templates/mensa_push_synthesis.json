@@ -1,0 +1,91 @@
+{
+	"transaction_id": "a73ba72b-8ce9-4a27-911e-f2b2f2954b8b",
+	"asset_id": "mockdevicemensa",
+	"timestamp": "1567009450",
+	"originator": {
+		"id": "",
+		"type": "NFC"
+	},
+	"customer_id": "test",
+	"synthesis": {
+		"dtcs": ["bmc=", "cm9tYW4="],
+		"odometerKm": 146343,
+		"fuelLevelPercent": 100,
+		"evChargePercent": 50.23,
+		"fuelRangeKm": 321.4,
+		"evChargeRangeKm": 121.4,
+		"fuelConsumptionKmPerL": 20.3,
+		"throttlePositionPercent": 65.2,
+		"accelerometer": 0.345,
+		"speedKph": 30,
+		"lightStatus": false,
+		"handbrake": false,
+		"location": {
+			"latitudeDegrees": 72.12343,
+			"longitudeDegrees": 43.12345,
+			"altitudeMeters": 20.43234,
+			"headingDegrees": 43.21243,
+			"gpsFixDimensions": 3,
+			"gpsFixTime": "2018-05-07T18:33:09.000Z",
+			"gpsHdop": 0.9814,
+			"satellites": 8,
+			"locked": true
+		},
+		"tirePressure": {
+			"frontDriverKpa": 234,
+			"frontPassengerKpa": 234,
+			"rearDriverKpa": 234,
+			"rearPassengerKpa": 234,
+			"spareKpa": 234
+		},
+		"doorStatus": {
+			"frontDriver": {
+				"locked": true,
+				"ajar": false
+			},
+			"frontPassenger": {
+				"locked": false,
+				"ajar": false
+			},
+			"rearDriver": {
+				"locked": false,
+				"ajar": false
+			},
+			"rearPassenger": {
+				"locked": false,
+				"ajar": true
+			},
+			"trunk": {
+				"locked": true,
+				"ajar": false
+			}
+		},
+		"batteryVoltage": 12.5321,
+		"tcuBatteryVoltage": 12.5321,
+		"seatBeltLight": false,
+		"ignition": "BATTERY",
+		"idleTimeSecs": 0,
+		"evCharging": false,
+		"evMode": false,
+		"connectedToCharger": false,
+		"malfunctionIndicatorLight": false,
+		"selfDiag": {
+			"diagnosticOk": false,
+			"message": "Antenna failed"
+		},
+		"networkInformation": {
+			"systemMode": "ACTIVATED",
+			"registrationStatus": "HOME",
+			"rssi": -60,
+			"bitErrorRate": -1.5
+		},
+		"rentalKeys": {
+			"nfcKeys": ["bdb77cbb-9995-44cc-9b07-52354f8640a8"]
+		},
+		"serviceKeys": {
+			"nfcKeys": ["key1"],
+			"bleKeyIdentifiers": ["keyidentifier"]
+		},
+		"eventSource": "DOORS_UNLOCKED"
+	}
+}

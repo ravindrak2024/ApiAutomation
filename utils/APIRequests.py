@@ -1,11 +1,13 @@
 import json
 import requests
 from utils.LogInitilizer import LogInitilizer
+from utils.AddSignatureInPushCall import addSignatureInPushCall
 logging=LogInitilizer.getLogger()
 
 
 class ApiRequests:
 
+    @addSignatureInPushCall
     def doPost(self,url,header,payload):
         logging.info("\nRequest - \nMethod - POST \n URL --------- {} \n with Header --------- {} \n Payload --------- {} ".format(url,header,payload))
         response = requests.post(url, headers=header, data=json.dumps(payload))

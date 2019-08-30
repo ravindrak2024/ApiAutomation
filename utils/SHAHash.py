@@ -1,22 +1,30 @@
 import hashlib
 import time
-
+import json
+import base64
+from utils.LogInitilizer import LogInitilizer
+logger=LogInitilizer.getLogger()
 
 class SHAHash:
 
     @classmethod
-    def getSignatureEvaluatedHeader(cls,data):
-        push_key=data['x-api-key']
-        push_key_secret=data['x-signature']
-        timestamp=int(time.time())
+    def getSignatureEvaluatedHeader(cls,method,url,header,payload):
+        push_key=header['x-api-key']
+        push_key_secret=header['x-signature']
+        timestamp = int(time.time())
+        header['x-timestamp']=str(timestamp)
 
-        pass
+        logger.info("Push key type - {}".format(type(push_key)))
+        logger.info("url - {}".format(type(url)))
+        logger.info("payload - {}".format(type(push_key)))
+        logger.info("Timestamp type - {}".format(type(timestamp)))
+        logger.info("Push key secret type - {}".format(type(push_key_secret)))
 
 
+        signature_text=push_key+'+'+url+'+'+method+'+'+json.dumps(payload)+'+'+str(timestamp)+'+'+push_key_secret
 
-
-
-
+        logger.info("Signature string {} with type {}".format(signature_text,type(signature_text.encode())))
+        return SHAHash.__GetIntegrity(4,signature_text.encode())
 
     @staticmethod
     def __GetIntegrity(hash_type,data):
@@ -37,6 +45,7 @@ class SHAHash:
             return hashlib.sha384(data).digest()
         elif hash_type == 4:
             # SHA-512
-            return hashlib.sha512(data).digest()
+            logger.info("Generating hash 512")
+            return hashlib.sha512(data).hexdigest()
         else:
             return None
