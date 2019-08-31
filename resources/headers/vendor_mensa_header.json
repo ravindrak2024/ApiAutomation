@@ -1,0 +1,4 @@
+{
+	"Authorization-Microservice": "$microservice_token_for_mensav",
+	"Application-Id": "$application_id_hal"
+}

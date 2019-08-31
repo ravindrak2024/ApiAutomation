@@ -1,0 +1,4 @@
+{
+	"action": "request_asset_status",
+	"tenant_id": "mocklab"
+}

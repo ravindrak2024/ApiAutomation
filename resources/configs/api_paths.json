@@ -6,5 +6,6 @@
   "create_vendor": "/hardware-integration/api/v3/vendor/",
   "create_asset": "/hardware-integration/api/v3/asset/",
   "get_asset": "/hardware-integration/api/v3/asset/#asset_id",
-  "mensa_push_synthesis": "/vendor-mensa/api/v1/synthesis"
+  "mensa_push_synthesis": "/vendor-mensa/api/v1/synthesis",
+  "vendor_mensa": "/vendor-mensa/api/v3/asset/#asset_id/action"
 }
