@@ -30,10 +30,10 @@ agent any
    stage('Build'){
 			steps{
 			script{
-			if (SKIP_BUILD == true) { return }
-
-            sh 'python -m pip install pipenv'
-            sh 'python -m pipenv install --ignore-pipfile'
+			if (SKIP_BUILD == false){
+                sh 'python -m pip install pipenv'
+                sh 'python -m pipenv install --ignore-pipfile'
+			}
 			}
 			}
   }
