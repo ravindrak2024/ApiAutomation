@@ -31,8 +31,24 @@ agent any
   }
 stage('Run Tests'){
 			steps{
-        sh 'python -m pipenv run pytest scripts -v --env=${ENVIRONMENT} --junitxml=result.xml --testrail --tr-config=testrail.cfg --tr-testrun-name=${TESTRAIL_RUN_NAME}'
-			}
+			switch(TESTS):{
+
+            case "All":
+                sh 'python -m pipenv run pytest scripts -v --env=${ENVIRONMENT} --junitxml=result.xml --testrail --tr-config=testrail.cfg --tr-testrun-name=${TESTRAIL_RUN_NAME}'
+                break
+            case "HWMS tests":
+                sh 'python -m pipenv run pytest scripts -m hwms_functional -v --env=${ENVIRONMENT} --junitxml=result.xml --testrail --tr-config=testrail.cfg --tr-testrun-name=${TESTRAIL_RUN_NAME}'
+                break
+            case "Mensa Functional":
+                sh 'python -m pipenv run pytest scripts -m mensa_functional -v --env=${ENVIRONMENT} --junitxml=result.xml --testrail --tr-config=testrail.cfg --tr-testrun-name=${TESTRAIL_RUN_NAME}'
+                break
+            case "Mensa Integration":
+                sh 'python -m pipenv run pytest scripts -m mensa_integration -v --env=${ENVIRONMENT} --junitxml=result.xml --testrail --tr-config=testrail.cfg --tr-testrun-name=${TESTRAIL_RUN_NAME}'
+                break
+
+            }
+
+        	}
   }
   
 }
