@@ -1,5 +1,19 @@
 pipeline {
 agent any
+    parameters {
+            choice(
+                name: 'TESTS',
+                choices:"All\nHWMS tests\nMensa Functional\nMensa Integration",
+                description: "Which tests to run ")
+            choice(
+                name: 'ENVIRONMENT',
+                choices:"eu_prod\nus_prod",
+                description: "Environment of the tests" )
+            string(
+                name: 'TESTRAIL_RUN_NAME',
+                defaultValue:"JenkinTestRun",
+                description: "Test rail testrun name")
+    }
    stages {
 	stage('Clone'){
 		steps{
@@ -17,7 +31,7 @@ agent any
   }
 stage('Run Tests'){
 			steps{
-        sh 'python -m pipenv run pytest scripts -v --env=${params.ENVIRONMENT} --junitxml=result.xml --testrail --tr-config=testrail.cfg --tr-testrun-name=${params.TESTRAIL RUN NAME}'
+        sh 'python -m pipenv run pytest scripts -v --env=${env.ENVIRONMENT} --junitxml=result.xml --testrail --tr-config=testrail.cfg --tr-testrun-name=${env.TESTRAIL_RUN_NAME}'
 			}
   }
   
