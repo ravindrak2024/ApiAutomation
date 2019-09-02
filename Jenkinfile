@@ -13,6 +13,10 @@ agent any
                 name: 'TESTRAIL_RUN_NAME',
                 defaultValue:"JenkinTestRun",
                 description: "Test rail testrun name")
+            booleanParam(
+                name: 'SKIP_BUILD',
+                defaultValue: false,
+                description: 'Skips build pipenv setup')
     }
    stages {
 	stage('Clone'){
@@ -25,8 +29,12 @@ agent any
 
    stage('Build'){
 			steps{
-          sh 'python -m pip install pipenv'
-          sh 'python -m pipenv install --ignore-pipfile'
+			script{
+			if (params.SKIP_BUILD == true) { return }
+
+            sh 'python -m pip install pipenv'
+            sh 'python -m pipenv install --ignore-pipfile'
+			}
 			}
   }
 stage('Run Tests'){
