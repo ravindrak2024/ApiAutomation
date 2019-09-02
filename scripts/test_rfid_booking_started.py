@@ -2,10 +2,12 @@ from .HALTestbase import HALTestbase
 from utils.RandomGenerator import *
 from utils.APIRequests import *
 from pytest_testrail.plugin import pytestrail
+import pytest
 
 class TestCaseRfidBookingStarted(HALTestbase):
 
     @pytestrail.case('C26')
+    @pytest.mark.hwms_functional
     def test_rfid_booking_started_with_valid_payload(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -25,6 +27,7 @@ class TestCaseRfidBookingStarted(HALTestbase):
         assert response_status == 204
 
     @pytestrail.case('C27')
+    @pytest.mark.hwms_functional
     def test_rfid_booking_started_with_incorrect_rfid(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -47,6 +50,7 @@ class TestCaseRfidBookingStarted(HALTestbase):
 
 
     @pytestrail.case('C28')
+    @pytest.mark.hwms_functional
     def test_rfid_booking_started_with_blank_rfid(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 

@@ -2,9 +2,11 @@ from .HALTestbase import HALTestbase
 from utils.RandomGenerator import *
 from utils.APIRequests import *
 from pytest_testrail.plugin import pytestrail
+import pytest
 
 class TestCaseBleBookingStarted(HALTestbase):
 
+    @pytest.mark.hwms_functional
     @pytestrail.case('C1')
     def test_ble_booking_started_with_valid_data(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
@@ -24,6 +26,7 @@ class TestCaseBleBookingStarted(HALTestbase):
         response_status, response_payload, response_headers = client.doPut(baseurl + api_path, header, payload)
         assert response_status == 204
 
+    @pytest.mark.hwms_functional
     @pytestrail.case('C2')
     def test_ble_booking_started_with_blank_ble(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')

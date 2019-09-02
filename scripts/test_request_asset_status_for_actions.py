@@ -1,11 +1,12 @@
 from .HALTestbase import HALTestbase
 from scripts.scriptutils.SynthesisConstants import *
 from pytest_testrail.plugin import pytestrail
-
+import pytest
 
 class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
 
     @pytestrail.case('C39')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_engine_started(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -22,6 +23,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'engine_started'
 
     @pytestrail.case('C40')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_engine_stopped(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -38,6 +40,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'engine_stopped'
 
     @pytestrail.case('C41')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_doors_unlocked(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -54,6 +57,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'doors_unlocked'
 
     @pytestrail.case('C42')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_doors_locked(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -70,6 +74,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'doors_locked'
 
     @pytestrail.case('C43')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_doors_unlocked_2(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -86,6 +91,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'doors_unlocked'
 
     @pytestrail.case('C44')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_DOORS_UNLOCKED_ALLOW_START(self, client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -104,6 +110,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
 
 
     @pytestrail.case('C45')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_asset_status_update_received(self, client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -122,6 +129,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
 
 
     @pytestrail.case('C46')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_engine_force_started(self, client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -138,6 +146,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'engine_force_started'
 
     @pytestrail.case('C47')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_engine_force_stopped(self, client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -154,6 +163,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'engine_force_stopped'
 
     @pytestrail.case('C48')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_doors_force_unlocked(self, client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -170,6 +180,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'doors_force_unlocked'
 
     @pytestrail.case('C49')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_doors_force_locked(self, client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -186,6 +197,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'doors_force_locked'
 
     @pytestrail.case('C50')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_doors_force_unlocked_DOORS_UNLOCKED(self, client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -202,6 +214,7 @@ class TestRequestAssetStatusForDoorandEngineActions(HALTestbase):
         assert response_payload["synthesis"]["action"] == 'doors_force_unlocked'
 
     @pytestrail.case('C51')
+    @pytest.mark.mensa_functional
     def test_request_asset_status_for_action_doors_force_unlocked_DOORS_UNLOCKED_ALLOW_START(self, client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 

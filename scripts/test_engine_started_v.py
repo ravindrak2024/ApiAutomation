@@ -2,10 +2,11 @@ from .HALTestbase import HALTestbase
 from utils.RandomGenerator import *
 from utils.APIRequests import *
 from pytest_testrail.plugin import pytestrail
-
+import pytest
 class TestCaseEngineStarted(HALTestbase):
 
     @pytestrail.case('C14')
+    @pytest.mark.hwms_functional
     def test_engine_started_with_valid_data(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -25,6 +26,7 @@ class TestCaseEngineStarted(HALTestbase):
         assert response_status == 204
 
     @pytestrail.case('C15')
+    @pytest.mark.hwms_functional
     def test_engine_started_with_invalid_rfid_key_val(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -47,6 +49,7 @@ class TestCaseEngineStarted(HALTestbase):
         assert 'Matching key not found in RFIDs or Device ID keys' in json.dumps(response_payload)
 
     @pytestrail.case('C16')
+    @pytest.mark.hwms_functional
     def test_engine_started_with_missing_synthesis(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -69,6 +72,7 @@ class TestCaseEngineStarted(HALTestbase):
         assert 'Missing Synthesis Data: Request requires complete synthesis data' in json.dumps(response_payload)
 
     @pytestrail.case('C17')
+    @pytest.mark.hwms_functional
     def test_engine_started_with_missing_raw_synthesis(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 

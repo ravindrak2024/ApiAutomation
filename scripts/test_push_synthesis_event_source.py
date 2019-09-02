@@ -3,10 +3,12 @@ from scripts.scriptutils.SynthesisConstants import *
 from utils.RandomGenerator import *
 from utils.APIRequests import *
 from pytest_testrail.plugin import pytestrail
+import pytest
 
 class TestCaseCheckPushSynthesisEventSourceWithValidRentalKey(HALTestbase):
 
     @pytestrail.case('C29')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_event_source_engine_on(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -20,6 +22,7 @@ class TestCaseCheckPushSynthesisEventSourceWithValidRentalKey(HALTestbase):
         assert response_status == 200
 
     @pytestrail.case('C30')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_event_source_engine_off(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -33,6 +36,7 @@ class TestCaseCheckPushSynthesisEventSourceWithValidRentalKey(HALTestbase):
         assert response_status == 200
 
     @pytestrail.case('C31')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_event_source_doors_open(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -46,6 +50,7 @@ class TestCaseCheckPushSynthesisEventSourceWithValidRentalKey(HALTestbase):
         assert response_status == 200
 
     @pytestrail.case('C32')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_event_source_doors_locked(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -59,6 +64,7 @@ class TestCaseCheckPushSynthesisEventSourceWithValidRentalKey(HALTestbase):
         assert response_status == 200
 
     @pytestrail.case('C33')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_event_source_doors_unlocked_allow_start(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -72,6 +78,7 @@ class TestCaseCheckPushSynthesisEventSourceWithValidRentalKey(HALTestbase):
         assert response_status == 200
 
     @pytestrail.case('C34')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_event_source_periodic_synthesis_update(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 

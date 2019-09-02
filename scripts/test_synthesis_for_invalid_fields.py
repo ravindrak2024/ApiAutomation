@@ -1,11 +1,12 @@
 from .HALTestbase import HALTestbase
 from scripts.scriptutils.SynthesisConstants import *
 from pytest_testrail.plugin import pytestrail
-
+import pytest
 
 class TestCaseCheckPushSynthesisForInvalidFieldInputs(HALTestbase):
 
     @pytestrail.case('C35')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_front_driver_object_missing(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -23,6 +24,7 @@ class TestCaseCheckPushSynthesisForInvalidFieldInputs(HALTestbase):
         assert response_payload["mensa-api"]["serverError"]["error"] == MENV_BAD_REQUEST_BODY
 
     @pytestrail.case('C36')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_ignition_object_missing(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -40,6 +42,7 @@ class TestCaseCheckPushSynthesisForInvalidFieldInputs(HALTestbase):
         assert response_payload["mensa-api"]["serverError"]["error"] == MENV_BAD_REQUEST_BODY
 
     @pytestrail.case('C37')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_no_rental_keys_object(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
@@ -55,6 +58,7 @@ class TestCaseCheckPushSynthesisForInvalidFieldInputs(HALTestbase):
         assert response_status == 200
 
     @pytestrail.case('C38')
+    @pytest.mark.mensa_functional
     def test_synthesis_with_doorStatus_object_missing(self,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 

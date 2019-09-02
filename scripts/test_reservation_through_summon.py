@@ -9,6 +9,7 @@ import softest
 class TestCaseReserveThroughSummon(HALTestbase):
 
     @pytestrail.case('C22')
+    @pytest.mark.hwms_functional
     def test_reserve_with_valid_inputs(self,configureTenantVendor,client):
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
         HALTestbase.commonAction.createAsset(asset_id)        # calling create asset from common function
@@ -17,6 +18,7 @@ class TestCaseReserveThroughSummon(HALTestbase):
         assert response_payload['ble_key']=='ble_key11'
 
     @pytestrail.case('C23')
+    @pytest.mark.hwms_functional
     def test_reserve_with_invalid_start_time_in_epoch(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')      # Picking up the baseurl from the config file
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10) # Creating a random asset id
@@ -34,6 +36,7 @@ class TestCaseReserveThroughSummon(HALTestbase):
         assert response_payload['UserMessage']=='Some error occurred in transition function execution (e.g. network call)'
 
     @pytestrail.case('C24')
+    @pytest.mark.hwms_functional
     def test_reserve_with_invalid_stop_time_in_epoch(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')  # Picking up the baseurl from the config file
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10) # Creating a random asset id
