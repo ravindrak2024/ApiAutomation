@@ -30,8 +30,9 @@ agent any
 			}
   }
 stage('Run Tests'){
+
 			steps{
-        sh 'python -m pipenv run pytest scripts -v --env=${env.ENVIRONMENT} --junitxml=result.xml --testrail --tr-config=testrail.cfg --tr-testrun-name=${env.TESTRAIL_RUN_NAME}'
+        sh 'python -m pipenv run pytest scripts -v --env="${env.ENVIRONMENT}" --junitxml=result.xml --testrail --tr-config=testrail.cfg --tr-testrun-name=${env.TESTRAIL_RUN_NAME}'
 			}
   }
   
