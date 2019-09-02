@@ -6,7 +6,7 @@ from pytest_testrail.plugin import pytestrail
 class TestCaseBleBookingStarted(HALTestbase):
 
     @pytestrail.case('C1')
-    def test_ble_booking_started_with_valid_data(self,client):
+    def test_ble_booking_started_with_valid_data(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -25,7 +25,7 @@ class TestCaseBleBookingStarted(HALTestbase):
         assert response_status == 204
 
     @pytestrail.case('C2')
-    def test_ble_booking_started_with_blank_ble(self,client):
+    def test_ble_booking_started_with_blank_ble(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id

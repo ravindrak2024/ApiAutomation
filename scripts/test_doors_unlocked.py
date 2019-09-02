@@ -6,7 +6,7 @@ from pytest_testrail.plugin import pytestrail
 class TestCaseDoorsUnlocked(HALTestbase):
 
     @pytestrail.case('C9')
-    def test_doors_unlocked_with_valid_values(self,client):
+    def test_doors_unlocked_with_valid_values(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -26,7 +26,7 @@ class TestCaseDoorsUnlocked(HALTestbase):
 
 
     @pytestrail.case('C10')
-    def test_doors_unlocked_with_invalid_rfid_key_val(self,client):
+    def test_doors_unlocked_with_invalid_rfid_key_val(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -48,7 +48,7 @@ class TestCaseDoorsUnlocked(HALTestbase):
         assert 'Matching key not found in RFIDs or Device ID keys' in json.dumps(response_payload)
 
     @pytestrail.case('C11')
-    def test_doors_unlocked_with_blank_rfid_key_val(self,client):
+    def test_doors_unlocked_with_blank_rfid_key_val(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -72,7 +72,7 @@ class TestCaseDoorsUnlocked(HALTestbase):
 
 
     @pytestrail.case('C12')
-    def test_doors_unlocked_with_missing_synthesis(self,client):
+    def test_doors_unlocked_with_missing_synthesis(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -94,7 +94,7 @@ class TestCaseDoorsUnlocked(HALTestbase):
         assert 'Missing Synthesis Data: Request requires complete synthesis data' in json.dumps(response_payload)
 
     @pytestrail.case('C13')
-    def test_doors_unlocked_with_missing_raw_synthesis(self,client):
+    def test_doors_unlocked_with_missing_raw_synthesis(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id

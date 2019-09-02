@@ -6,7 +6,7 @@ from pytest_testrail.plugin import pytestrail
 class TestCaseAssetStatusUpdateReceived(HALTestbase):
 
     @pytestrail.case('C3')
-    def test_asset_status_update_received_with_valid_payload(self,client):
+    def test_asset_status_update_received_with_valid_payload(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -25,7 +25,7 @@ class TestCaseAssetStatusUpdateReceived(HALTestbase):
         assert response_status == 204
 
     @pytestrail.case('C4')
-    def test_asset_status_update_received_with_blank_ble_key(self,client):
+    def test_asset_status_update_received_with_blank_ble_key(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -47,7 +47,7 @@ class TestCaseAssetStatusUpdateReceived(HALTestbase):
         assert 'No key sent: a key is required for this request' in json.dumps(response_payload)
 
     @pytestrail.case('C5')
-    def test_asset_status_update_received_with_no_synthesis(self,client):
+    def test_asset_status_update_received_with_no_synthesis(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id

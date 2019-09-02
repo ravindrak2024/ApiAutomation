@@ -6,7 +6,7 @@ from pytest_testrail.plugin import pytestrail
 class TestCaseEngineStopped(HALTestbase):
 
     @pytestrail.case('C18')
-    def test_engine_stopped_with_valid_values(self,client):
+    def test_engine_stopped_with_valid_values(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -25,7 +25,7 @@ class TestCaseEngineStopped(HALTestbase):
         assert response_status == 204
 
     @pytestrail.case('C19')
-    def test_engine_stopped_with_invalid_rfid_key_val(self,client):
+    def test_engine_stopped_with_invalid_rfid_key_val(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -48,7 +48,7 @@ class TestCaseEngineStopped(HALTestbase):
 
 
     @pytestrail.case('C20')
-    def test_engine_stopped_with_missing_synthesis(self,client):
+    def test_engine_stopped_with_missing_synthesis(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -70,7 +70,7 @@ class TestCaseEngineStopped(HALTestbase):
         assert 'Missing Synthesis Data: Request requires complete synthesis data' in json.dumps(response_payload)
 
     @pytestrail.case('C21')
-    def test_engine_stopped_with_missing_raw_synthesis(self,client):
+    def test_engine_stopped_with_missing_raw_synthesis(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-'+generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id

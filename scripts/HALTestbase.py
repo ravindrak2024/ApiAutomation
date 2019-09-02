@@ -9,6 +9,9 @@ class HALTestbase(TestBase):
     def setup(self,client):
         HALTestbase.commonAction = CommonActions(TestBase.Templates,client)
 
+
+    @pytest.fixture
+    def configureTenantVendor(self):
         response_status, response_payload, response_headers = HALTestbase.commonAction.createTenant()
 
         if response_status == 201:

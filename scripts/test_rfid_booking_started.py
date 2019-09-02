@@ -6,7 +6,7 @@ from pytest_testrail.plugin import pytestrail
 class TestCaseRfidBookingStarted(HALTestbase):
 
     @pytestrail.case('C26')
-    def test_rfid_booking_started_with_valid_payload(self,client):
+    def test_rfid_booking_started_with_valid_payload(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -25,7 +25,7 @@ class TestCaseRfidBookingStarted(HALTestbase):
         assert response_status == 204
 
     @pytestrail.case('C27')
-    def test_rfid_booking_started_with_incorrect_rfid(self,client):
+    def test_rfid_booking_started_with_incorrect_rfid(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
@@ -47,7 +47,7 @@ class TestCaseRfidBookingStarted(HALTestbase):
 
 
     @pytestrail.case('C28')
-    def test_rfid_booking_started_with_blank_rfid(self,client):
+    def test_rfid_booking_started_with_blank_rfid(self,configureTenantVendor,client):
         baseurl = self.Templates.getFromConfig('$baseurl')
 
         asset_id = 'api-' + generateRandom(RandomDataType.STRING, 10)  # Creating a random asset id
