@@ -31,8 +31,8 @@ agent any
 			steps{
 			script{
 			if (!params.SKIP_BUILD){
-                sh 'python -m pip install pipenv'
-                sh 'python -m pipenv install --ignore-pipfile'
+                bat 'python -m pip install pipenv'
+                bat 'python -m pipenv install --ignore-pipfile'
 			}
 			}
 			}
